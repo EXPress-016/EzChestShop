@@ -20,14 +20,14 @@ jobs:
           distribution: 'adopt'
       - name: Install mojang remapped spigot jar
         run: |
-            curl https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar > BuildTools.jar
+            curl -L -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
             mkdir spigot
             cd spigot
-            java -Xmx2G -jar BuildTools.jar --rev 1.16.5 --remapped
-            java -Xmx2G -jar BuildTools.jar --rev 1.17.1 --remapped
-            java -Xmx2G -jar BuildTools.jar --rev 1.18.2 --remapped
-            java -Xmx2G -jar BuildTools.jar --rev 1.19.4 --remapped
-            java -Xmx2G -jar BuildTools.jar --rev 1.20.4 --remapped
+            java -Xmx2G -jar ../BuildTools.jar --rev 1.16.5 --remapped
+            java -Xmx2G -jar ../BuildTools.jar --rev 1.17.1 --remapped
+            java -Xmx2G -jar ../BuildTools.jar --rev 1.18.2 --remapped
+            java -Xmx2G -jar ../BuildTools.jar --rev 1.19.4 --remapped
+            java -Xmx2G -jar ../BuildTools.jar --rev 1.20.4 --remapped
       - name: Build with Maven
         run: mvn clean install
       - name: Upload a Build Artifact
